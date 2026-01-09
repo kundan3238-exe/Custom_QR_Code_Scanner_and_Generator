@@ -1,0 +1,305 @@
+
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode-styling/lib/index.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body id="body">
+        <div id="qrGenerator">
+            
+                <div style="margin: 10px;">
+                    <select name="Scanner" onchange="navigate(this)" style="border: none; transition: 1s;">
+                        <option value="index.html">Generator</option>
+                        <option value="qrScanner/index.html">Scanner</option>
+                        <option value="login.html">Sign Out</option>
+
+                    </select>
+                </div>
+            </a>
+            <div class="main">
+                <div>
+                    <div id="heading-div" style=" margin-top: -60px;"><center><b><h1>CUSTOM <span style="color:#006dff" id="convert-type-name">QR</span></h1></b></center></div>
+                    <div class="button-cont">
+                        <center>
+                            <button id="url" onclick="typedatabtn(1)">URL</button>
+                            <button id="text" onclick="typedatabtn(2)">Text</button>
+                            <button id="whatsapp" onclick="typedatabtn(3) ">Whatsapp</button>
+                            <button id="phone" onclick="typedatabtn(4)">Phone</button>
+                            <button id="vcard" onclick="typedatabtn(5)">vCard</button>
+                            <button id="sms" onclick="typedatabtn(6)">SMS</button>
+                            <button id="mail" onclick="typedatabtn(7)">Mail</button>
+                            <button id="wifi" onclick="typedatabtn(8)">Wi-fi</button>
+                        </center>
+                        <center>
+                        <div class="url_Cls appeared-data-cont">
+                            <div><input type="text" id="urlx" placeholder="https:// " style="width: 450px;" class="appeared-data" onkeyup="updateQrDataz1()" onchange="updateQrDataz1()" required></div>
+                            
+                        </div>
+                        <div class="text_Cls appeared-data-cont">
+                            <div><input type="text" id="txtx" placeholder="Enter Text Here" style="width: 450px;" class="appeared-data" onkeyup="updateQrDataz2()" onchange="updateQrDataz2()" required></div>
+                        </div>
+                        <div class="whatsapp_Cls appeared-data-cont">
+                            <div><input type="number" id="phno" placeholder="Enter Phone No." style="width: 450px;" class="appeared-data" min="10" maxlength="10" onkeyup="updateQrDataz3()" onchange="updateQrDataz3()" required></div>
+                            <br><div><input type="text" id="msg" placeholder="Enter Message" style="width: 450px;" class="appeared-data" onkeyup="updateQrDataz3()" onchange="updateQrDataz3()" required></div>
+                        </div>
+                        <div class="contact_Cls appeared-data-cont">
+                            <div><input type="number" id="cid" placeholder="Enter Mobile No." style="width: 450px;" class="appeared-data" onkeyup="updateQrDataz4()" onchange="updateQrDataz4()" required></div>
+                        </div>
+                        <div class="vcard_Cls appeared-data-cont">
+                            <div><input type="text" id="vfn" placeholder="Enter First Name" style="width: 450px;" class="appeared-data" onkeyup="updateQrDataz5()" onchange="updateQrDataz5()" required></div>
+                            <div><input type="text" id="vln" placeholder="Enter Last Name" style="width: 450px;" class="appeared-data" onkeyup="updateQrDataz5()" onchange="updateQrDataz5()" required></div>
+                            <br><div><input type="number" id="vphno" placeholder="Enter Phone No." style="width: 450px;" class="appeared-data" onkeyup="updateQrDataz5()" onchange="updateQrDataz5()" required></div>
+                            <br><div><input type="email" id="vemail" placeholder="Enter Email" style="width: 450px;" class="appeared-data" onkeyup="updateQrDataz5()" onchange="updateQrDataz5()" required></div>
+                        </div>
+                        <div class="sms_Cls appeared-data-cont">
+                            <div><input type="number" id="sphno" placeholder="Enter Phone No." style="width: 450px;" class="appeared-data"  onkeyup="updateQrDataz6()" onchange="updateQrDataz6()" required></div>
+                            <br><div><input type="text" id="smsg" placeholder="Enter Message" style="width: 450px;" class="appeared-data" onkeyup="updateQrDataz6()" onchange="updateQrDataz6()" required></div>
+                        </div>
+                        <div class="mail_Cls appeared-data-cont">
+                            <div><input type="email" id="mid" placeholder="Enter Email ID" style="width: 450px;" class="appeared-data"  onkeyup="updateQrDataz7()" onchange="updateQrDataz7()" required></div>
+                            <div><input type="text" id="sub" placeholder="Enter Subject" style="width: 450px;" class="appeared-data" onkeyup="updateQrDataz7()" onchange="updateQrDataz7()" required></div>
+                            <br><div><input type="text" id="mmsg" placeholder="Enter Message" style="width: 450px;" class="appeared-data" onkeyup="updateQrDataz7()" onchange="updateQrDataz7()" required></div>
+                        </div>
+                        <div class="wifi_Cls appeared-data-cont">
+                            <div><input type="text" id="wifiid" placeholder="Enter Wifi ID" style="width: 450px;" class="appeared-data" onkeyup="updateQrDataz8()" onchange="updateQrDataz8()"required></div>
+                            <div><input type="text" id="wifiPass" placeholder="Enter Wifi Password" style="width: 450px;" class="appeared-data" onkeyup="updateQrDataz8()" onchange="updateQrDataz8()" required></div>
+                        </div>
+                        </center>
+                    </div>
+                    <div>         
+                        <form id="qrform" onsubmit="return false">
+                            <br><br><br><br>
+                            <div class="container">
+                                <div class="sidebar">
+                                    <img alt="qr logo" onclick="show1(1,true)" id="img1" class="sidebar-imgs sdbar1-img" src="images/github.svg">
+                                    <img alt="dot image" onclick="show1(2,true)" id="img2" class="sidebar-imgs" src="images/classy.svg">
+                                    <input type="color" onchange="updateQrColor2()" name="colorinput" id="colorInput" class="color-circle1 colorc1" value="#000"/>
+                                    <input type="color" onchange="updateQrColor2()" name="colorinput" id="colorInput2" class="color-circle1 colorc2" value="#00FFFFFF"/>
+                                    <input type="color" onchange="updateQrColor1()" name="colorinput1" id="colorInput1" class="color-circle1 colorc3" value="#FFFFFF"/>
+                                </div>
+                                <div class="sidebar-box">
+                                    <div class="imgs-box" id="img1-box">
+                                        <input type="file" onchange="updateQrImg1()" name="imageinput" id="imageInput" accept="image/*" class="upload-btn"/>
+                                        <img onclick="updateQrImg('images/bitcoin.svg')" id="box1-img1" class="box1-imgs" src="images/bitcoin.svg">
+                                        <img onclick="updateQrImg('images/cashapp.svg')" id="box1-img1" class="box1-imgs" src="images/cashapp.svg">
+                                        <img onclick="updateQrImg('images/discord.svg')" id="box1-img1" class="box1-imgs" src="images/discord.svg">
+                                        <img onclick="updateQrImg('images/github.svg')" id="box1-img1" class="box1-imgs" src="images/github.svg">
+                                        <img onclick="updateQrImg('images/gmail.svg')" id="box1-img1" class="box1-imgs" src="images/gmail.svg">
+                                        <img onclick="updateQrImg('images/google.svg')" id="box1-img1" class="box1-imgs" src="images/google.svg">
+                                        <img onclick="updateQrImg('images/googledocs.svg')" id="box1-img1" class="box1-imgs" src="images/googledocs.svg">
+                                        <img onclick="updateQrImg('images/googledrive.svg')" id="box1-img1" class="box1-imgs" src="images/googledrive.svg">
+                                        <img onclick="updateQrImg('images/googlemaps.svg')" id="box1-img1" class="box1-imgs" src="images/googlemaps.svg">
+                                        <img onclick="updateQrImg('images/instagram2.svg')" id="box1-img1" class="box1-imgs" src="images/instagram2.svg">
+                                        <img onclick="updateQrImg('images/instagram3.svg')" id="box1-img1" class="box1-imgs" src="images/instagram3.svg">
+                                        <img onclick="updateQrImg('images/iphone.svg')" id="box1-img1" class="box1-imgs" src="images/iphone.svg">
+                                        <img onclick="updateQrImg('images/iwifi.svg')" id="box1-img1" class="box1-imgs" src="images/iwifi.svg">
+                                        <img onclick="updateQrImg('images/linkedin.svg')" id="box1-img1" class="box1-imgs" src="images/linkedin.svg">
+                                        <img onclick="updateQrImg('images/messanger.svg')" id="box1-img1" class="box1-imgs" src="images/messanger.svg">
+                                        <img onclick="updateQrImg('images/patreon.svg')" id="box1-img1" class="box1-imgs" src="images/patreon.svg">
+                                        <img onclick="updateQrImg('images/patreon2.svg')" id="box1-img1" class="box1-imgs" src="images/patreon2.svg">
+                                        <img onclick="updateQrImg('images/paypal.svg')" id="box1-img1" class="box1-imgs" src="images/paypal.svg">
+                                        <img onclick="updateQrImg('images/pixbancocentral.svg')" id="box1-img1" class="box1-imgs" src="images/pixbancocentral.svg">
+                                        <img onclick="updateQrImg('images/reddit.svg')" id="box1-img1" class="box1-imgs" src="images/reddit.svg">
+                                        <img onclick="updateQrImg('images/skype.svg')" id="box1-img1" class="box1-imgs" src="images/skype.svg">
+                                        <img onclick="updateQrImg('images/snap.svg')" id="box1-img1" class="box1-imgs" src="images/snap.svg">
+                                        <img onclick="updateQrImg('images/spotify.svg')" id="box1-img1" class="box1-imgs" src="images/spotify.svg">
+                                        <img onclick="updateQrImg('images/telegram.svg')" id="box1-img1" class="box1-imgs" src="images/telegram.svg">
+                                        <img onclick="updateQrImg('images/twitch.svg')" id="box1-img1" class="box1-imgs" src="images/twitch.svg">
+                                        <img onclick="updateQrImg('images/tripadvisor.svg')" id="box1-img1" class="box1-imgs" src="images/tripadvisor.svg">
+                                        <img onclick="updateQrImg('images/wechat.svg')" id="box1-img1" class="box1-imgs" src="images/wechat.svg">
+                                        <img onclick="updateQrImg('images/whatsapp2.svg')" id="box1-img1" class="box1-imgs" src="images/whatsapp2.svg">
+                                        <img onclick="updateQrImg('images/wifiblack.svg')" id="box1-img1" class="box1-imgs" src="images/wifiblack.svg">
+                                        <img onclick="updateQrImg('images/x.svg')" id="box1-img1" class="box1-imgs" src="images/x.svg">
+                                        <img onclick="updateQrImg('images/youtube.svg')" id="box1-img1" class="box1-imgs" src="images/youtube.svg">
+                                        <img onclick="updateQrImg('images/youtube2.svg')" id="box1-img1" class="box1-imgs" src="images/youtube2.svg">
+                                        <img onclick="updateQrImg('images/zoom.svg')" id="box1-img1" class="box1-imgs" src="images/zoom.svg">
+                                        <img onclick="updateQrImg('images/alipay.svg')" id="box1-img1" class="box1-imgs" src="images/alipay.svg">
+                                        <img onclick="updateQrImg('images/bin.png')" id="box1-img1" class="box1-imgs" src="images/bin.png">
+                                    </div>
+                                    <div class="imgs-box" id="img2-box">
+                                        <img onclick="updateQrType('square')" id="typeInput" class="box2-imgs" src="images/square.svg">
+                                        <img onclick="updateQrType('dots')" id="typeInput" class="box2-imgs" src="images/dots.svg">
+                                        <img onclick="updateQrType('rounded')" id="typeInput" class="box2-imgs" src="images/rounded.svg">
+                                        <img onclick="updateQrType('extra-rounded')" id="typeInput" class="box2-imgs" src="images/extra-rounded.svg">
+                                        <img onclick="updateQrType('classy')" id="typeInput" class="box2-imgs" src="images/classy.svg">
+                                        <img onclick="updateQrType('classy-rounded')" id="typeInput" class="box2-imgs" src="images/classy-rounded.svg">
+                                        <img onclick="updateQrType1('dots')" id="typeInput" class="box2-imgs" src="images/outterdot1.jpg">
+                                        <img onclick="updateQrType1('extra-rounded')" id="typeInput" class="box2-imgs" src="images/outterrounded1.jpg">
+                                        <img onclick="updateQrType1('square')" id="typeInput" class="box2-imgs" src="images/outtersquare1.jpg">
+                                        <img onclick="updateQrType2('dots')" id="typeInput" class="box2-imgs" src="images/dot1.jpg">
+                                        <img onclick="updateQrType2('square')" id="typeInput" class="box2-imgs" src="images/square1.jpg">
+                                    </div>  
+                                </div>
+                                <div class="qr-code">
+                                    <center><div id="canvas"></div></center>
+                                </div>
+                                <div class="buttons">
+                                    <button onclick="downloadJPG()">JPG</button>
+                                    <button onclick="downloadPNG()">PNG</button>
+                                    <button onclick="downloadPDF()">PDF</button>
+                                    <button onclick="downloadSVG()">SVG</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div><br><br><br><br>
+                    
+            <div class="dbtn">
+                <button id="formButton" onclick="reset()">Reset</button>
+            </div>
+                </div>
+            </div>
+            <div class="step-cont">
+                <img src="images/QRSteps.png" id="qrsteps">
+                <img src="images/customqrsteps.PNG" id="customqrsteps">
+            </div>
+            <div class="faq-box" id="#faq-box-cont">  
+                <center><h1>Got questions?</h1></center>
+                <div class="faq-container">
+                    <div class="faq-item active">
+                        <h2>
+                            What is a QR Code?
+                            <i class="fas fa-chevron-down"></i>
+                        </h2>
+                        <p>
+                            A QR Code (Quick Response code) is a type of two-dimensional barcode that can store a large amount of data, such as URLs, text, or other information. You can quickly access them by scanning the code with a mobile device or QR Code reader.
+                        </p>
+                    </div>
+                    <div class="faq-item">
+                        <h2>
+                            What is a barcode?
+                            <i class="fas fa-chevron-down"></i>
+                        </h2>
+                        <p>
+                            A barcode is a method of representing data in a visual, machine-readable form. It consists of a series of parallel lines of varying widths and spacing, which can be scanned and interpreted by a barcode reader.
+                        </p>
+                    </div>
+                    <div class="faq-item">
+                        <h2>
+                            What is a QR Code generator?
+                            <i class="fas fa-chevron-down"></i>
+                        </h2>
+                        <p>
+                            A QR Code generator is a tool that allows you to create QR Codes. You can input data such as a URL, text, or other information, and the generator will produce a QR Code that represents that data.
+                        </p>
+                    </div>
+                    <div class="faq-item">
+                        <h2>
+                            Do QR Codes have to be black and white?
+                            <i class="fas fa-chevron-down"></i>
+                        </h2>
+                        <p>
+                            No, QR Codes do not have to be black and white. You can customize the colors of QR Code, but it's important to maintain good contrast between the background and the code pattern to ensure it can be easily scanned.
+                        </p>
+                    </div>
+                    <div class="faq-item">
+                        <h2>Can I customize a QR Code with my company logo or icon?
+                            <i class="fas fa-chevron-down"></i>
+                        </h2>
+                        <p>
+                            Yes, you can customize the QR Code with your company logo and icon using many QR Code generators. Custom QR Codes are more visually appealing, enhancing brand recognition.
+                        </p>
+                    </div>
+                    <div class="faq-item">
+                        <h2>
+                            What is the difference between a static QR Code and a dynamic QR Code?
+                            <i class="fas fa-chevron-down"></i>
+                        </h2>
+                        <p>
+                            A static QR Code contains fixed information that cannot be changed once the code is generated. A dynamic QR Code, on the other hand, allows you to update the information stored in the code without changing the QR Code itself.
+                        </p>
+                    </div>
+                    <div class="faq-item">
+                        <h2>How do I download my QR Code?
+                            <i class="fas fa-chevron-down"></i>
+                        </h2>
+                        <p>
+                            After creating your QR Code with a generator, you can usually download it in various formats, such as PNG, JPG, or SVG, by clicking a download button.
+                        </p>
+                    </div>
+                    <div class="faq-item">
+                        <h2>
+                            Are QR Codes free?
+                            <i class="fas fa-chevron-down"></i>
+                        </h2>
+                        <p>
+                            Yes, generating and using QR Codes is generally free. However, some advanced features or services, such as dynamic QR Codes or analytics, may require a subscription or payment.
+                        </p>
+                    </div>
+                    <div class="faq-item">
+                        <h2>
+                            Can I use the generated QR Code for commercial purposes?
+                            <i class="fas fa-chevron-down"></i>
+                        </h2>
+                        <p>
+                            Yes, you can use QR Codes for commercial purposes. They are commonly used in marketing, advertising, and product packaging to provide customers with quick access to information or promotions.
+                        </p>
+                    </div>
+                    <div class="faq-item">
+                        <h2>
+                            Can the reading of a QR Code fail?
+                            <i class="fas fa-chevron-down"></i>
+                        </h2>
+                        <p>
+                            Yes, the reading of a QR Code can fail if the code is damaged, distorted, or if the scanning device is not functioning properly. Ensuring the QR Code is clear and properly printed can help prevent reading failures.
+                        </p>
+                    </div>
+                    <div class="faq-item">
+                        <h2>
+                            Are QR Codes legally protected? What is the licensing policy?
+                            <i class="fas fa-chevron-down"></i>
+                        </h2>
+                        <p>
+                            QR Codes themselves are not legally protected, but the content they link to may be subject to copyright or other legal protections. It is important to respect intellectual property rights when using QR Codes.
+                        </p>
+                    </div>
+                    <div class="faq-item">
+                        <h2>
+                            How long are QR Codes valid? Do QR Codes created expire?
+                            <i class="fas fa-chevron-down"></i>
+                        </h2>
+                        <p>
+                            QR Codes themselves do not expire and can be used indefinitely. However, the content they link to, such as a URL, may change or become unavailable over time.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+                
+            <div class="footer">
+                <div class="footer-left">
+                    <p>Sign up with the easiest-to-use QR Code generator</p>
+                    <p class="italic">Made by Rudra Milke & Kundan Atel</p>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-column">
+                        <h3>About</h3>
+                        <p><a href="#">What's a QR Code?</a></p>
+                        <p><a href="#">Blog</a></p>
+                        <p><a href="#">Best QR Code Generator</a></p>
+                        <p><a href="#">Custom QR Code</a></p>
+                        <p><a href="#">Dynamic QR Code</a></p>
+                        <p><a href="#qrsteps">Help Center</a></p>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Contact us</h3>
+                        <p><a href="mailto:rudramilke@gmail.com">rudramilke@gmail.com</a></p>
+                        <p><a href="mailto:kundanatel@gmail.com">kundanatel@gmail.com</a></p>
+                        <p>+91 7957609611</p>
+                        <p>+91 8010330906</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="qrScanner">
+
+        </div>
+
+                <script src="index.js"></script>
+    </body>
+</html>
+
+
